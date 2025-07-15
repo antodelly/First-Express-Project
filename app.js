@@ -8,21 +8,26 @@ dotenv.config();
 app.use(express.json());
 app.listen(process.env.PORT, () => {
   console.clear();
-  console.log("======================================");
+  console.log("=======================================");
   console.log(`SERVER STARTED ON http://localhost:${process.env.PORT}`);
-  console.log("======================================");
+  console.log("=======================================");
 });
 
 // Database connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
+    console.log("=======================================");
     console.log(`MongoDB connected. DB used is ${process.env.MONGO_DB_NAME}`);
-    console.log("======================================");
+    console.log("=======================================");
   })
   .catch((err) => console.error("MongoDB connection error: ", err));
 
-// Example route
+// Example routes
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+app.get("/api", (req, res) => {
+  res.send({ message: "API is working!" });
 });
