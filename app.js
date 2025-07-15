@@ -31,3 +31,11 @@ app.get("/", (req, res) => {
 app.get("/api", (req, res) => {
   res.send({ message: "API is working!" });
 });
+
+// Importing and using the test route
+import testRouter from "./routes/test.js";
+app.use("/apiTest", testRouter);
+
+// Importing and using the persona router
+import personaRouter from "./routes/persona.router.js";
+app.use("/api/persona", personaRouter);
