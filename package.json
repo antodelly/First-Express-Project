@@ -2,6 +2,7 @@
   "name": "first-express-project",
   "version": "1.0.0",
   "description": "My first Express.js project",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js"
