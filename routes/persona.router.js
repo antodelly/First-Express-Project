@@ -1,5 +1,6 @@
 import express from "express";
 import Persona from "../models/persona.model.js";
+import { getPersonaFromId } from "../functions/persona.functions.js";
 
 const personaRouter = express.Router();
 
@@ -23,6 +24,11 @@ personaRouter.post("/", async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: "Error creating persona: ", error });
   }
+});
+
+personaRouter.get("/:id", getPersonaFromId, (req, res) => {
+  const persona = res.persona;
+  res.status(200).json(persona);
 });
 
 export default personaRouter;
